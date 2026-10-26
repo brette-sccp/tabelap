@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Nomes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .form-grupo {
+            margin-bottom: 15px;
+        }
+        .campo {
+            padding: 5px;
+            font-size: 14px;
+        }
+        .btn {
+            padding: 6px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .tabela {
+            width: 100%;
+            max-width: 300px;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        .tabela th, .tabela td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+        .tabela th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+   
+    <h2>Cadastro</h2>
+
+    <div class="form-grupo">
+     <label for="nome">Nome:</label>
+     <input type="text" id="nome" class="campo" placeholder="Digite o nome">
+     <button id="btn-add" class="btn">Adicione</button>
+    </div>
+ 
+    <table class="tabela">
+        <thead>
+            <tr>
+                <th>Nome</th>
+            </tr>
+        </thead>
+     
+     <tbody id="lista">
+ 
+     </tbody>
+ 
+    </table>
+
+    <script>
+        const campoNome = document.getElementById("nome");
+        const btnAdd = document.getElementById("btn-add");
+        const lista = document.getElementById("lista");
+
+        btnAdd.addEventListener("click", () => {
+            const valor = campoNome.value.trim();
+
+            if (valor !== "") {
+                // Cria uma nova linha na tabela
+                const linha = document.createElement("tr");
+                const coluna = document.createElement("td");
+               
+                coluna.textContent = valor;
+                linha.appendChild(coluna);
+                lista.appendChild(linha);
+
+                // Limpa o campo e foca nele novamente
+                campoNome.value = "";
+                campoNome.focus();
+            } else {
+                alert("Por favor, digite um nome!");
+            }
+        });
+    </script>
+
+</body>
+</html>
